@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spell Typing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Spell Typing</h1>
+  <div id="hud">
+    Level: <span id="level">1</span> |
+    Score: <span id="score">0</span> |
+    High Score: <span id="highScore">0</span> |
+    Lives: <span id="lives">3</span>
+  </div>
+  <button id="muteBtn" class="pixel-button">Mute Sound</button>
+
+  <!-- Retro-arcade overlay (start + game-over) -->
+  <div id="overlay" class="overlay">
+    <div class="cabinet">
+      <div class="marquee">Binshō-sei</div>
+      <div class="screen" id="overlayMessage">PRESS ENTER<br>TO START</div>
+    </div>
+  </div>
+
+  <!-- Floating aliens container -->
+  <div id="floatingAliens" aria-hidden="true"></div>
+  <!-- Game area where monsters will appear -->
+  <div id="gameArea"></div>
+
+  <!-- Input box for typing spells -->
+  <input id="textInput" type="text" placeholder="Type here..." autofocus />
+
+  <script src="game.js"></script>
+</body>
+</html>
