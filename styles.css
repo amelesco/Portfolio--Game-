@@ -1,0 +1,1062 @@
+/* Import a pixel/retro font if available */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Base styles with dark background */
+:root {
+  --retro-bg1: #0a0a1f;  /* Dark background for stars */
+  --retro-bg2: #1a1b3a;
+  --retro-accent: #ff00cc;
+  --retro-accent2: #00fff7;
+  --retro-text: #fffbe7;
+  --retro-card: #23234b;  /* Solid background for cards */
+  --retro-shadow: 0 0 8px #ff00cc, 0 0 16px #00fff7;
+  --transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Enhanced Animations and Transitions */
+:root {
+  --transition-slow: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  --transition-medium: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  --transition-fast: 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--retro-bg1);
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Press Start 2P', monospace, Arial, sans-serif;
+  color: var(--retro-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Full-screen animated starfield background */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 200px 150px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 250px 220px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 300px 180px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: stars 8s linear infinite;
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  background-size: 400px 400px;
+  transform: rotate(45deg);
+  opacity: 0.3;
+  animation: stars 15s linear infinite;
+}
+
+@keyframes stars {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-300px);
+  }
+}
+
+/* Enhanced Parallax Layers */
+.parallax-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+}
+
+.parallax-layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: 50% 50%;
+}
+
+/* Replace the stars background with CSS-generated stars */
+#parallax-stars {
+  transform: translateZ(-1px) scale(2);
+  background: transparent;
+  opacity: 1;
+  overflow: hidden;
+}
+
+#parallax-stars::before,
+#parallax-stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars 4s linear infinite;
+  opacity: 0.5;
+}
+
+#parallax-stars::after {
+  background-size: 300px 300px;
+  transform: rotate(30deg);
+  opacity: 0.3;
+  animation: stars 8s linear infinite;
+}
+
+@keyframes stars {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+/* Update grid background to use CSS instead of image */
+#parallax-grid {
+  transform: translateZ(-0.25px) scale(1.25);
+  background-image: 
+    linear-gradient(var(--retro-accent2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--retro-accent2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  opacity: 0.1;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    transform: translateZ(-0.25px) scale(1.25) translateY(0);
+  }
+  to {
+    transform: translateZ(-0.25px) scale(1.25) translateY(40px);
+  }
+}
+
+/* Main content container */
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Styles */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding-top: 15vh;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: var(--retro-text);
+  text-shadow: 0 0 10px var(--retro-accent2);
+}
+
+/* About Section */
+.about {
+  padding-top: 10vh;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: var(--retro-text);
+  text-shadow: 0 0 10px var(--retro-accent2);
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-card img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Navigation */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--retro-bg1);
+  z-index: 10;
+  box-shadow: var(--retro-shadow);
+  padding: 1.5rem 0;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  color: var(--retro-accent2);
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  transition: all var(--transition);
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.main-nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--retro-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition);
+  box-shadow: 0 0 8px var(--retro-accent);
+}
+
+.main-nav a:hover {
+  color: var(--retro-accent);
+  text-shadow: 0 0 8px var(--retro-accent2);
+}
+
+.main-nav a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Why Web Dev Section */
+.why-web {
+  padding-top: 10vh;
+}
+
+.whyweb-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth;
+}
+
+.whyweb-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.whyweb-card {
+  min-width: 300px;
+  max-width: 400px;
+  padding: 2rem;
+  background: var(--retro-bg1);
+  border-radius: 12px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px var(--retro-accent),
+              0 0 30px var(--retro-accent);
+}
+
+.whyweb-card:hover {
+  transform: translateY(-10px);
+}
+
+.whyweb-card h3 {
+  color: var(--retro-accent2);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.whyweb-card p {
+  color: var(--retro-text);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Add scroll indicators */
+.whyweb::after {
+  content: '→';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  font-size: 2rem;
+  color: var(--retro-accent2);
+  animation: bounce-horizontal 2s infinite;
+  opacity: 0.7;
+}
+
+@keyframes bounce-horizontal {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+.terminal-effect {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 8px;
+  background: var(--retro-bg1);
+  border: 2px solid var(--retro-accent);
+  box-shadow: 0 0 20px var(--retro-accent2),
+              0 0 30px var(--retro-accent);
+}
+
+#typing-text {
+  color: var(--retro-text);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 1rem;
+}
+
+#typing-text::before {
+  content: "";
+  display: inline;
+  color: var(--retro-accent2);
+}
+
+/* Showcase Section */
+.showcase {
+  padding-top: 8vh;
+}
+
+.showcase-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.showcase-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 2rem;
+}
+
+/* Start Button */
+.start-btn {
+  margin-top: 2rem;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background: var(--retro-accent);
+  color: var(--retro-bg1);
+  border: none;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite;
+  box-shadow: 0 0 15px var(--retro-accent),
+              0 0 25px var(--retro-accent);
+}
+
+.start-btn:hover {
+  transform: translateY(-5px);
+  background: var(--retro-accent2);
+  box-shadow: 0 0 20px var(--retro-accent2),
+              0 0 30px var(--retro-accent2),
+              0 0 40px var(--retro-accent2);
+  animation: none;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Button Hover Effects */
+.start-btn::before, .retro-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all var(--transition-fast);
+}
+
+.start-btn:hover::before, .retro-button:hover::before {
+  left: 100%;
+}
+
+/* About Me */
+#about-typed {
+  color: #00fff7; /* Cyan color matching your Why Web Dev section */
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+  padding: 1.5rem;
+  background: #13142b;
+  border-radius: 8px;
+  border: 1px solid var(--retro-accent);
+  box-shadow: 0 0 15px rgba(255, 0, 204, 0.3);
+  position: relative;
+}
+
+/* Remove the $ icon */
+/* #about-typed::before {
+  content: "$ ";
+  color: #00fff7df;
+  opacity: 0.8;
+} */
+
+/* Terminal Text Effects */
+#about-typed, #typing-text {
+  position: relative;
+  overflow: hidden;
+}
+
+#about-typed::after, #typing-text::after {
+  content: '_';
+  animation: cursor 1s infinite step-end;
+}
+
+/* Showcase */
+.showcase-card {
+  transition: transform 0.3s, box-shadow 0.4s;
+}
+.showcase-card:hover, .showcase-card:focus {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 24px var(--retro-accent2), 0 0 32px var(--retro-accent);
+}
+
+/* Interactive Elements */
+.showcase-card {
+  transition: all var(--transition-medium);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.showcase-card:hover {
+  transform: translateY(-10px) rotateX(10deg) rotateY(-10deg);
+  box-shadow: 0 15px 30px rgba(255, 0, 204, 0.3);
+}
+
+/* Arcade Section */
+.game-showcase {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.game-card {
+  background: var(--retro-bg1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--retro-accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px var(--retro-accent);
+}
+
+.game-preview {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.game-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 31, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover .game-overlay {
+  opacity: 1;
+}
+
+.game-overlay h3 {
+  color: var(--retro-accent);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.game-overlay p {
+  color: var(--retro-text);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.play-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--retro-accent);
+  color: var(--retro-bg1);
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.play-button:hover {
+  transform: translateY(-2px);
+}
+
+.button-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(45deg);
+  animation: button-glow 2s infinite;
+}
+
+.game-info {
+  padding: 1.5rem;
+  background: var(--retro-bg2);
+  text-align: center;
+}
+
+.game-instructions {
+  color: var(--retro-accent2);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.game-tech {
+  color: var(--retro-text);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@keyframes button-glow {
+  0% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(-50%); }
+  100% { transform: rotate(45deg) translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-preview {
+    height: 300px;
+  }
+  
+  .game-overlay h3 {
+    font-size: 1.2rem;
+  }
+  
+  .play-button {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  background: none;
+}
+
+.contact::before {
+  display: none;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--retro-accent);
+  color: var(--retro-bg1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: var(--retro-shadow);
+  margin-top: 1rem;
+  transition: background var(--transition), color var(--transition);
+}
+.github-link img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+.github-link:hover, .github-link:focus {
+  background: var(--retro-accent2);
+  color: var(--retro-text);
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.contact-icons a {
+  background: var(--retro-accent);
+  border-radius: 8px;
+  box-shadow: var(--retro-shadow);
+  padding: 0.5rem;
+  transition: background var(--transition), box-shadow var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-icons a:hover, .contact-icons a:focus {
+  background: var(--retro-accent2);
+  box-shadow: 0 0 24px var(--retro-accent2), 0 0 32px var(--retro-accent);
+}
+.contact-icons img {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* Fade/Slide Animations (triggered by JS) */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth Section Transitions */
+.section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  transition: transform var(--transition-slow), 
+              opacity var(--transition-slow),
+              background var(--transition-medium);
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1;
+  transition: opacity var(--transition-medium);
+}
+
+/* Profile Card Hover Effect */
+.profile-card {
+  transition: all var(--transition-medium);
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 0, 204, 0.4);
+}
+
+/* Accessibility */
+:focus {
+  outline: 2px dashed var(--retro-accent2);
+  outline-offset: 2px;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--retro-bg1);
+  border-radius: 12px;
+  border: 2px solid var(--retro-accent);
+  box-shadow: 0 0 20px var(--retro-accent);
+}
+
+.retro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.retro-form label {
+  color: var(--retro-accent2);
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* Card Styles */
+.showcase-card,
+.whyweb-card {
+  background: var(--retro-bg1);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--retro-accent),
+ 
+              0 0 30px var(--retro-accent);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.showcase-card:hover,
+.whyweb-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px var(--retro-accent),
+              0 0 50px var(--retro-accent);
+}
+
+/* Input field styles */
+.retro-form input,
+.retro-form textarea {
+  background: var(--retro-bg1);
+  border: 2px solid var(--retro-accent);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--retro-text);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  transition: all var(--transition);
+}
+
+.retro-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.retro-form input:focus,
+.retro-form textarea:focus {
+  outline: none;
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 15px var(--retro-accent);
+}
+
+.retro-button {
+  background: var(--retro-accent);
+  color: var(--retro-bg1);
+  border: none;
+  padding: 1rem 2rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--retro-accent);
+}
+
+.retro-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--retro-accent);
+}
+
+/* Social Icons */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: var(--retro-accent);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--retro-accent),
+              0 0 25px var(--retro-accent);
+}
+
+.social-link:hover,
+.social-link:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--retro-accent),
+              0 0 30px var(--retro-accent),
+              0 0 40px var(--retro-accent);
+}
+
+.social-link:hover {
+  animation: pulseGlow 1.5s infinite;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Makes icons white */
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .social-link {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .contact-icons {
+    gap: 1.5rem;
+  }
+}
+
+/* Footer */
+.retro-footer {
+  text-align: center;
+  padding: 2rem;
+  background: var(--retro-bg2);
+  border-top: 2px solid var(--retro-accent);
+  box-shadow: 0 -4px 16px rgba(255, 0, 204, 0.2);
+}
+
+.retro-footer small {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: var(--retro-accent2);
+  letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes twinkling {
+  0% { transform: translateZ(-1px) scale(2); }
+  50% { opacity: 0.2; }
+  100% { transform: translateZ(-1px) scale(2); }
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+
+@keyframes cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px var(--retro-accent); }
+  50% { box-shadow: 0 0 30px var(--retro-accent), 0 0 45px var(--retro-accent); }
+  100% { box-shadow: 0 0 15px var(--retro-accent); }
+}
+
+/* Enhanced Scroll Reveal Animations with Unique Patterns */
+.whyweb .showcase-card,
+.showcase .showcase-card,
+.contact-form,
+.contact-icons {
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  will-change: opacity, transform;
+}
+
+/* Why Web Dev - Diagonal Slide Pattern */
+.whyweb .showcase-card:nth-child(1) {
+  transform: translate(-50px, 50px) rotate(-5deg);
+  transition-delay: 0.3s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.whyweb .showcase-card:nth-child(2) {
+  transform: translateY(70px) rotate(3deg);
+  transition-delay: 0.6s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.whyweb .showcase-card:nth-child(3) {
+  transform: translate(50px, 50px) rotate(5deg);
+  transition-delay: 0.9s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Showcase - Spiral Reveal Pattern */
+.showcase .showcase-card {
+  transform-origin: center;
+}
+
+.showcase .showcase-card:nth-child(1) {
+  transform: scale(0.5) rotate(-15deg);
+  transition-delay: 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.showcase .showcase-card:nth-child(2) {
+  transform: scale(0.5) rotate(15deg);
+  transition-delay: 0.4s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.showcase .showcase-card:nth-child(3) {
+  transform: scale(0.5) rotate(-15deg);
+  transition-delay: 0.6s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Contact - Staggered Fade with Bounce */
+.contact-form {
+  transform: translateY(100px);
+  transition-delay: 0.4s;
+  transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.contact-icons {
+  transform: scale(0) translateY(-30px);
+  transition-delay: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* Visible state animations */
+.section.visible .showcase-card,
+.section.visible .contact-form {
+  opacity: 1;
+  transform: translate(0) rotate(0) scale(1);
+}
+
+.section.visible .contact-icons {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Add subtle hover effects for cards */
+.section.visible .showcase-card:hover {
+  transform: translateY(-10px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset animations when scrolling up */
+.section:not(.visible) .showcase-card,
+.section:not(.visible) .contact-form,
+.section:not(.visible) .contact-icons {
+  opacity: 0;
+}
+
+/* Add glow effect on reveal */
+@keyframes revealGlow {
+  0% { box-shadow: 0 0 0 rgba(255, 0, 204, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 0, 204, 0.3); }
+  100% { box-shadow: 0 0 0 rgba(255, 0, 204, 0); }
+}
+
+.section.visible .showcase-card,
+.section.visible .contact-form {
+  animation: revealGlow 1.5s ease-out forwards;
+} 

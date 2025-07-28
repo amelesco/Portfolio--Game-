@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Portfolio - Adaliz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="parallax-wrapper">
+    <!-- Parallax Background Layers -->
+    <div class="parallax-layer" id="parallax-stars" aria-hidden="true"></div>
+    <div class="parallax-layer" id="parallax-skyline" aria-hidden="true"></div>
+    
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#hero" data-section="hero">Home</a></li>
+          <li><a href="#about" data-section="about">About</a></li>
+          <li><a href="#whyweb" data-section="whyweb">Why Web Dev</a></li>
+          <li><a href="#showcase" data-section="showcase">Showcase</a></li>
+          <li><a href="#arcade" data-section="arcade">Arcade</a></li>
+          <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hero Section -->
+      <section id="hero" class="section hero" tabindex="-1">
+        <div class="hero-content">
+    
+          <h1>Welcome to Adaliz's Retro Portfolio</h1>
+          <button class="start-btn">Start</button>
+        </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="section about" tabindex="-1">
+        <h2>About Me</h2>
+        <div class="profile-card">
+          <p id="about-typed"></p>
+        </div>
+      </section>
+
+      <!-- Why Web Dev Section -->
+      <section id="whyweb" class="section why-web" tabindex="-1">
+        <h2>Why Web Development?</h2>
+        <div class="showcase-cards">
+          <div class="showcase-card" tabindex="0">
+            <h3>The Beginning</h3>
+            <p>Switching into tech wasn't a random decision; it came from a growing curiosity and desire to build things.</p>
+          </div>
+          <div class="showcase-card" tabindex="0">
+            <h3>The Journey</h3>
+            <p>I began teaching myself HTML, CSS, and JavaScript. The more I learned about how the web works, the more excited I became about the logic and creativity involved.</p>
+          </div>
+          <div class="showcase-card" tabindex="0">
+            <h3>The Goal</h3>
+            <p>Being part of a supportive team that values learning and purpose would be a huge step forward in my journey.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Showcase Section -->
+      <section id="showcase" class="section showcase" tabindex="-1">
+        <h2>Showcase</h2>
+        <div class="showcase-cards">
+          <div class="showcase-card" tabindex="0">
+            <h3>HTML</h3>
+            <p>The backbone of the web. I used it to structure content clearly and semantically, using tags like header, main, section, and article to give each part of the page meaning. Forms, buttons, links, and images were placed with purpose, making sure both humans and machines could understand the layout.</p>
+          </div>
+          <div class="showcase-card" tabindex="0">
+            <h3>CSS</h3>
+            <p>The soul and personality. It transformed plain structure into an experience. I styled elements with fonts, colors, spacing, and transitions, using Flexbox and Grid to create responsive layouts that worked across screen sizes. Pseudo-classes, keyframe animations, and media queries helped me fine-tune interactivity and design flow.</p>
+          </div>
+          <div class="showcase-card" tabindex="0">
+            <h3>JavaScript</h3>
+            <p>The brain. I used it to handle user events, update the DOM in real time, and control game logic with loops, conditionals, arrays, and objects. I practiced writing callbacks, explored browser APIs, and applied basic data structures like stacks and queues. Along the way, I sharpened my debugging skills and tackled algorithmic challenges by breaking problems into clear, logical steps.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Arcade/Game Section -->
+      <section id="arcade" class="section arcade" tabindex="-1">
+        <h2>Arcade</h2>
+        <div class="game-showcase">
+          <div class="game-card">
+            <div class="game-preview">
+              <div class="game-overlay">
+                <h3>Spell Typing</h3>
+                <p>A retro arcade typing game where speed and accuracy are your best weapons.</p>
+                <a href="games/retro-game/index.html" target="_blank" rel="noopener" class="play-button">
+                  Play Game
+                  <span class="button-glow"></span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <p class="game-instructions">🎮 Click to Play</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section contact" tabindex="-1">
+        <h2>Contact</h2>
+        <p>Want to connect or see my code?</p>
+        
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form action="" method="POST" class="retro-form">
+            <div class="form-group">
+              <label for="email">Your email:</label>
+              <input type="email" id="email" name="_reply to" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Your message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="retro-button">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="contact-icons">
+          <a href="https://github.com/amelesco" target="_blank" rel="noopener" class="social-link" aria-label="View my GitHub profile">
+            <img src="assets/img/social/github.png" alt="GitHub" class="social-icon" />
+          </a>
+          <a href="https://www.linkedin.com/in/mariaescobar4/" target="_blank" rel="noopener" class="social-link" aria-label="View my LinkedIn profile">
+            <img src="assets/img/social/linkedin.png" alt="LinkedIn" class="social-icon" />
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="View my YouTube channel">
+            <img src="assets/img/social/youtube.png" alt="YouTube" class="social-icon" />
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="retro-footer">
+    <small>Developed and designed by Adaliz Escobar. ©2025. All rights reserved.</small>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html> 
